@@ -9,7 +9,11 @@ npm i -g typescript ts-node
 npm i -g @sap/cds-dk
 npm i
 
-## Run App
+```
 
-```cds-ts watch
+### Run App
+
+```
+cds-ts watch
+```
 ````
