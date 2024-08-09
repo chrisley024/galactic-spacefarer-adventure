@@ -2,12 +2,14 @@
 
 Welcome to Galactic Spacefarer Adventure.
 
-## Installation
+### Installation
 
-`npm i -g typescript ts-node`
-`npm i -g @sap/cds-dk`
-``npm i`
+````
+npm i -g typescript ts-node
+npm i -g @sap/cds-dk
+npm i
 
 ## Run App
 
-`cds-ts watch`
+```cds-ts watch
+````
