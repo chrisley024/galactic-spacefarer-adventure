@@ -1,13 +1,14 @@
-ID;name;stardustCollection;wormholeNavigationSkill;originPlanet;spacesuitColor;department_ID;position_ID
-1001;Captain Starwalker;150;85;Jupiter;Navy;101;204
-1002;Dr. Nova Quark;300;70;Venus;Blue;102;202
-1003;Engr Orion Pax;200;65;Venus;Blue;103;203
-1004;Explorer Zeta Prime;400;90;Mercury;Gray;101;201
-1005;Commander Stella Ray;350;95;Jupiter;Gray;104;204
-1006;Engr. John Prime;400;90;Mercury;Gray;101;201
-1007;Dr. Jane Phil;230;85;Mercury;Blue;102;203
-1008;Dr. Jane Phil;213;85;Jupiter;Navy;104;204
-1009;Commander. Julia Pane;350;79;Venus;Navy;101;203
+ID,name,stardustCollection,wormholeNavigationSkill,originPlanet,spacesuitColor,department_ID,position_ID
+999c6aac-42eb-45c4-9020-bf6831ccaf44,Captain Starwalker,150,Advanced,Jupiter,Navy,dc902a6b-452d-479f-ab29-086d559deaed,493964af-8814-4d7f-ad7d-b95cb750b9e5
+a3dbb961-7f0e-4eae-9899-83721cdcccdc,Dr. Nova Quark,300,Intermediate,Venus,Blue,9662ccce-f6e0-4a8a-871a-1b0ad4d7f78b,493964af-8814-4d7f-ad7d-b95cb750b9e5
+381953e9-f168-41c7-8d8b-0471804e3e3d,Engr Orion Pax,200,Intermediate,Venus,Blue,7daeddb9-1480-4b72-8b74-d600b4d3dde0,8fc6beb3-3344-4a7b-9af1-6902e878ab86
+306952cc-27e2-474f-b7cf-c18cb65ca191,Explorer Zeta Prime,400,Advanced,Mercury,Gray,dc902a6b-452d-479f-ab29-086d559deaed,8fc6beb3-3344-4a7b-9af1-6902e878ab86
+83ca6cab-84bc-4362-bda0-ecbc802ae97b,Commander Stella Ray,350,Advanced,Jupiter,Gray,7daeddb9-1480-4b72-8b74-d600b4d3dde0,70e11fee-3736-49e9-b2b2-2ffa61bba788
+5e600aaf-eb55-4601-b403-ad9a37bc5db4,Engr. John Prime,400,Expert,Mercury,Gray,dc902a6b-452d-479f-ab29-086d559deaed,a682667d-f611-4f21-a19c-9b2c0fea107f
+258f5f1a-467b-4a01-9d09-f23a9c2adfc7,Dr. Jane Phil,230,NoSkill,Mercury,Blue,7daeddb9-1480-4b72-8b74-d600b4d3dde0,a682667d-f611-4f21-a19c-9b2c0fea107f
+42696983-3883-4d28-99f5-a8a90103a326,Dr. Jane Phil,213,NoSkill,Jupiter,Navy,9662ccce-f6e0-4a8a-871a-1b0ad4d7f78b,70e11fee-3736-49e9-b2b2-2ffa61bba788
+2787e122-0bce-4858-83e9-e3c80b856602,Commander. Julia Pane,350,Intermediate,Venus,Navy,9662ccce-f6e0-4a8a-871a-1b0ad4d7f78b,a682667d-f611-4f21-a19c-9b2c0fea107f
+
 
 
 

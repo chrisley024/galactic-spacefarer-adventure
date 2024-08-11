@@ -1,5 +1,5 @@
 ID,title,description,department_ID
-201,Explorer,explores new galaxies and planets,102
-202,Scientist,scientific research on various cosmic topics,103
-203,Engineer,maintains and repairs spacecraft,101
-204,Captain,leads space missions and oversees the crew,104
+493964af-8814-4d7f-ad7d-b95cb750b9e5,Explorer,explores new galaxies and planets,dc902a6b-452d-479f-ab29-086d559deaed
+8fc6beb3-3344-4a7b-9af1-6902e878ab86,Scientist,scientific research on various cosmic topics,dc902a6b-452d-479f-ab29-086d559deaed
+a682667d-f611-4f21-a19c-9b2c0fea107f,Engineer,maintains and repairs spacecraft,7daeddb9-1480-4b72-8b74-d600b4d3dde0
+70e11fee-3736-49e9-b2b2-2ffa61bba788,Captain,leads space missions and oversees the crew,9662ccce-f6e0-4a8a-871a-1b0ad4d7f78b

@@ -1,43 +1,32 @@
 import { ApplicationService, Request } from "@sap/cds";
 import { SpacefarerService } from "./services/Spacefarer.service";
+import { wormholeNavigationSkill } from "./types/common";
 
 export default class GalacticSpacefarerService extends ApplicationService {
   init(): Promise<void> {
     const { Spacefarer } = this.entities;
     const spacefarerService = new SpacefarerService();
 
-    this.before("CREATE", Spacefarer, async (req) => {
+    this.before("CREATE", Spacefarer, async (req: Request) => {
       const spacefarer = req.data;
 
       if (spacefarer.stardustCollection < 100) {
         spacefarer.stardustCollection = 100;
       }
-      if (spacefarer.wormholeNavigationSkill < 50) {
-        spacefarer.wormholeNavigationSkill = 50;
+
+      if (
+        spacefarer.wormholeNavigationSkill === wormholeNavigationSkill.Beginner
+      ) {
+        spacefarer.wormholeNavigationSkill =
+          wormholeNavigationSkill.Intermediate;
       }
     });
 
-    this.after("CREATE", Spacefarer, async (data, req) => {
+    this.after("CREATE", Spacefarer, async (data) => {
       const spacefarer = data;
 
       // Simulating sending an email notification
-      await spacefarerService.sendCosmicNotification(spacefarer);
-    });
-
-    this.before("READ", Spacefarer, async (req: Request) => {
-      const userPlanet = req.user.attr.planet;
-
-      if (!userPlanet) {
-        req.reject(403, "You do not have permission to view this data.");
-      }
-
-      if (req.query.SELECT) {
-        const query = SELECT.from(Spacefarer).where({
-          originPlanet: userPlanet,
-        });
-
-        req.query = query;
-      }
+      spacefarerService.sendCosmicNotification(spacefarer);
     });
 
     return super.init();

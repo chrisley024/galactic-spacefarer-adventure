@@ -2,12 +2,13 @@ using {cuid} from '@sap/cds/common';
 
 namespace my.galactic.spacefarer;
 
+
 entity Spacefarer : cuid {
-    name                    : String(100)                @mandatory;
-    stardustCollection      : Integer                   @mandatory;
-    wormholeNavigationSkill : Integer                   @mandatory;
-    originPlanet            : Planet                    @mandatory;
-    spacesuitColor          : Color                     @mandatory;
+    name                    : String(100)  @mandatory  @assert.format: '^[A-Za-z ]+$';
+    stardustCollection      : Integer      @mandatory;
+    wormholeNavigationSkill : Skill        @mandatory  @assert.format: '^[A-Za-z ]+$';
+    originPlanet            : String(50)   @mandatory  @assert.format: '^[A-Za-z ]+$';
+    spacesuitColor          : String(50)   @mandatory  @assert.format: '^[A-Za-z ]+$';
     department              : Association to Department @assert.notNull;
     position                : Association to Position   @assert.notNull;
 }
@@ -28,14 +29,9 @@ entity Position : cuid {
                       on spacefarers.position = $self;
 }
 
-type Color  : String enum {
-    NAVY    = 'Navy';
-    BLUE    = 'Blue';
-    GRAY    = 'Gray'
-}
-
-type Planet : String enum {
-    MERCURY = 'Mercury';
-    JUPITER = 'Jupiter';
-    VENUS   = 'Venus'
-}
+type Skill : String(10) enum {
+    Beginner     = 'Beginner';
+    Intermediate = 'Intermediate';
+    Advanced     = 'Advanced';
+    Expert       = 'Expert';
+};
