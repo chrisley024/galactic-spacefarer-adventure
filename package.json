@@ -29,8 +29,29 @@
       "auth": {
         "kind": "mocked",
         "users": {
-          "aldi-sued": {
-            "roles": ["SpacefarerAdmin"]
+          "mercury": {
+            "roles": [
+              "SpacefarerUser"
+            ],
+            "attr": {
+              "planet": "Mercury"
+            }
+          },
+          "venus": {
+            "roles": [
+              "SpacefarerUser"
+            ],
+            "attr": {
+              "planet": "Venus"
+            }
+          },
+          "jupiter": {
+            "roles": [
+              "SpacefarerUser"
+            ],
+            "attr": {
+              "planet": "Jupiter"
+            }
           }
         }
       }

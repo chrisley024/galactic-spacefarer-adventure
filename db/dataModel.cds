@@ -3,31 +3,39 @@ using {cuid} from '@sap/cds/common';
 namespace my.galactic.spacefarer;
 
 entity Spacefarer : cuid {
-    name               : String(50) @mandatory;
-    stardustCollection : Integer    @mandatory;
-    wormholeNavigation : Integer    @mandatory;
-    originPlanet       : String     @mandatory;
-    spacesuitColor     : String enum {
-        Navy;
-        Grey;
-        Blue;
-        Black;
-        White;
-    };
-    department         : Association to Department;
-    position           : Association to Position;
+    name                    : String(100)                @mandatory;
+    stardustCollection      : Integer                   @mandatory;
+    wormholeNavigationSkill : Integer                   @mandatory;
+    originPlanet            : Planet                    @mandatory;
+    spacesuitColor          : Color                     @mandatory;
+    department              : Association to Department @assert.notNull;
+    position                : Association to Position   @assert.notNull;
 }
 
+
 entity Department : cuid {
-    name        : String(50) @mandatory;
-    description : String(150);
+    name        : String(100) @mandatory;
+    description : String(255);
     spacefarers : Composition of many Spacefarer
                       on spacefarers.department = $self;
 }
 
 entity Position : cuid {
-    title       : String(50) @mandatory;
-    description : String(150);
+    title       : String(100) @mandatory;
+    description : String(255);
+    department  : Association to Department;
     spacefarers : Composition of many Spacefarer
                       on spacefarers.position = $self;
+}
+
+type Color  : String enum {
+    NAVY    = 'Navy';
+    BLUE    = 'Blue';
+    GRAY    = 'Gray'
+}
+
+type Planet : String enum {
+    MERCURY = 'Mercury';
+    JUPITER = 'Jupiter';
+    VENUS   = 'Venus'
 }
