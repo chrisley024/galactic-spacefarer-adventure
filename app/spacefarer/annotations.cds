@@ -5,29 +5,29 @@ annotate service.Spacefarer with @(
         Data : [
             {
                 $Type : 'UI.DataField',
-                Label : 'name',
+                Label : 'Name',
                 Value : name,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'stardustCollection',
+                Label : 'Stardust Collection',
                 Value : stardustCollection,
                 Criticality : stardustCollection,
                 CriticalityRepresentation : #WithIcon,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'wormholeNavigationSkill',
+                Label : 'wormhole Navigation Skill',
                 Value : wormholeNavigationSkill,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'originPlanet',
+                Label : 'Origin Planet',
                 Value : originPlanet,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'spacesuitColor',
+                Label : 'Suit Color',
                 Value : spacesuitColor,
             },
         ],
@@ -110,7 +110,13 @@ annotate service.Spacefarer with @(
         TypeNamePlural: 'Spacefarers',
         Title: {Value: name}
     }
-);   
+);
+
+annotate service.Spacefarer with @(
+  Capabilities: {
+    Deletable : false,
+  }
+);
 
 
 

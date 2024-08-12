@@ -7,6 +7,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["srv/**/*.ts"],
+  "include": ["srv/**/*.ts", "srv/types.ts"],
   "exclude": ["node_modules"]
 }

@@ -24,6 +24,9 @@
   },
   "cds": {
     "requires": {
+      "fiori": {
+        "bypass_draft": true
+      },
       "db": {
         "kind": "sqlite",
         "credentials": {
@@ -33,12 +36,12 @@
       "auth": {
         "kind": "mocked",
         "users": {
-          "mercury": {
+          "mars": {
             "roles": [
               "user"
             ],
             "attr": {
-              "planet": "Mercury"
+              "planet": "Mars"
             }
           },
           "venus": {
@@ -49,13 +52,10 @@
               "planet": "Venus"
             }
           },
-          "jupiter": {
+          "admin": {
             "roles": [
-              "user"
-            ],
-            "attr": {
-              "planet": "Jupiter"
-            }
+              "admin"
+            ]
           }
         }
       }

@@ -1,37 +1,41 @@
-using {cuid} from '@sap/cds/common';
+using {
+    cuid,
+    sap.common.CodeList
+} from '@sap/cds/common';
 
 namespace my.galactic.spacefarer;
 
-
 entity Spacefarer : cuid {
-    name                    : String(100)  @mandatory  @assert.format: '^[A-Za-z ]+$';
-    stardustCollection      : Integer      @mandatory;
-    wormholeNavigationSkill : Skill        @mandatory  @assert.format: '^[A-Za-z ]+$';
-    originPlanet            : String(50)   @mandatory  @assert.format: '^[A-Za-z ]+$';
-    spacesuitColor          : String(50)   @mandatory  @assert.format: '^[A-Za-z ]+$';
-    department              : Association to Department @assert.notNull;
-    position                : Association to Position   @assert.notNull;
+    name                    : String(100) @mandatory;
+    stardustCollection      : Integer     @mandatory;
+    wormholeNavigationSkill : String(50)  @mandatory;
+    originPlanet            : String(50)  @mandatory;
+    spacesuitColor          : String(50)  @mandatory;
+    department_ID           : String      @assert.notNull;
+    position_ID             : String      @assert.notNull;
+    department              : Association to one Department
+                                  on department.ID = department_ID;
+    position                : Association to one Position
+                                  on position_ID = position.ID;
 }
 
 
+@assert.unique: {Department: [name]}
 entity Department : cuid {
     name        : String(100) @mandatory;
     description : String(255);
     spacefarers : Composition of many Spacefarer
                       on spacefarers.department = $self;
+
 }
 
+@assert.unique: {Position: [title]}
 entity Position : cuid {
-    title       : String(100) @mandatory;
-    description : String(255);
-    department  : Association to Department;
-    spacefarers : Composition of many Spacefarer
-                      on spacefarers.position = $self;
+    title         : String(100) @mandatory;
+    description   : String(255);
+    department_ID : UUID        @assert.notNull;
+    department    : Association to one Department
+                        on department_ID = department.ID;
+    spacefarers   : Composition of many Spacefarer
+                        on spacefarers.position = $self;
 }
-
-type Skill : String(10) enum {
-    Beginner     = 'Beginner';
-    Intermediate = 'Intermediate';
-    Advanced     = 'Advanced';
-    Expert       = 'Expert';
-};
