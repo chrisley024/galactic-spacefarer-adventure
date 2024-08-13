@@ -50,11 +50,11 @@ export default class GalacticSpacefarerService extends ApplicationService {
 
     this.after("CREATE", Spacefarer, async (data) => {
       const spacefarer = data as Spacefarer;
-      // Simulate sending an notification
+      // Simulate sending a notification
       data.cosmicMessage = `Congrats ${spacefarer.name} on starting your adventurous journey!!!`;
 
       console.log(
-        `cosmicMsg sent to ${spacefarer.name}: `,
+        `###################################\n cosmicMsg sent to ${spacefarer.name}: `,
         spacefarer.cosmicMessage
       );
     });
