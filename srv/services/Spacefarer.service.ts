@@ -4,14 +4,6 @@ export class SpacefarerService {
   private departmentTable = "my.galactic.spacefarer.Department";
   private positionTable = "my.galactic.spacefarer.Position";
 
-  public async positionExists(payload: Spacefarer) {
-    if (!payload.position_ID) throw new Error("No position_ID provided!");
-
-    return await SELECT.one
-      .from(this.positionTable)
-      .where({ ID: payload.position_ID });
-  }
-
   public async validateDepartment(payload: Spacefarer) {
     if (!payload.department_ID) throw new Error("No department_ID provided!");
 
