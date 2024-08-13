@@ -11,6 +11,13 @@ annotate service.Spacefarer with @(
                 ![@Common.FieldControl]: #ReadOnly,
             },
             {
+                $Type                  : 'UI.DataField',
+                Value                  : position.title,
+                Label                  : 'Position',
+                ![@Common.FieldControl]: #ReadOnly,
+
+            },
+            {
                 $Type: 'UI.DataField',
                 Label: 'Stardust Collection',
                 Value: stardustCollection,
@@ -32,6 +39,13 @@ annotate service.Spacefarer with @(
                 $Type: 'UI.DataField',
                 Label: 'Suit Color',
                 Value: spacesuitColor,
+
+            },
+            {
+                $Type                  : 'UI.DataField',
+                Value                  : department.name,
+                Label                  : 'Department',
+                ![@Common.FieldControl]: #ReadOnly,
 
             },
         ],
