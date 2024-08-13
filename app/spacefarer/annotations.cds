@@ -1,121 +1,73 @@
 using GalacticSpacefarerService as service from '../../srv/galactic-spacefarer-service';
+
 annotate service.Spacefarer with @(
-    UI.FieldGroup #GeneratedGroup : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #GeneratedGroup: {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Label : 'Name',
-                Value : name,
+                $Type                  : 'UI.DataField',
+                Label                  : 'Name',
+                Value                  : name,
+                ![@Common.FieldControl]: #ReadOnly,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'Stardust Collection',
-                Value : stardustCollection,
-                Criticality : stardustCollection,
-                CriticalityRepresentation : #WithIcon,
+                $Type: 'UI.DataField',
+                Label: 'Stardust Collection',
+                Value: stardustCollection,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'wormhole Navigation Skill',
-                Value : wormholeNavigationSkill,
+                $Type                  : 'UI.DataField',
+                Label                  : 'wormhole Navigation Skill',
+                Value                  : wormholeNavigationSkill,
+                ![@Common.FieldControl]: #ReadOnly,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'Origin Planet',
-                Value : originPlanet,
+                $Type                  : 'UI.DataField',
+                Label                  : 'Origin Planet',
+                Value                  : originPlanet,
+                ![@Common.FieldControl]: #ReadOnly,
+
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'Suit Color',
-                Value : spacesuitColor,
+                $Type: 'UI.DataField',
+                Label: 'Suit Color',
+                Value: spacesuitColor,
+
             },
         ],
     },
-    UI.Facets : [
+    UI.Facets                    : [{
+        $Type : 'UI.ReferenceFacet',
+        ID    : 'GeneratedFacet1',
+        Label : 'General Information',
+        Target: '@UI.FieldGroup#GeneratedGroup',
+    }, ],
+    UI.LineItem                  : [
         {
-            $Type : 'UI.ReferenceFacet',
-            ID : 'GeneratedFacet1',
-            Label : 'General Information',
-            Target : '@UI.FieldGroup#GeneratedGroup',
-        },
-    ],
-    UI.LineItem : [
-        {
-            $Type : 'UI.DataField',
-            Label : 'Name',
-            Value : name,
+            $Type: 'UI.DataField',
+            Label: 'Name',
+            Value: name,
         },
         {
-            $Type : 'UI.DataField',
-            Label : 'Stardust Collection',
-            Value : stardustCollection,
+            $Type: 'UI.DataField',
+            Label: 'Stardust Collection',
+            Value: stardustCollection,
 
         },
         {
-            $Type : 'UI.DataField',
-            Label : 'Color',
-            Value : spacesuitColor,
+            $Type: 'UI.DataField',
+            Label: 'Color',
+            Value: spacesuitColor,
         },
     ],
 );
 
-annotate service.Spacefarer with {
-    department @Common.ValueList : {
-        $Type : 'Common.ValueListType',
-        CollectionPath : 'Department',
-        Parameters : [
-            {
-                $Type : 'Common.ValueListParameterInOut',
-                LocalDataProperty : department_ID,
-                ValueListProperty : 'ID',
-            },
-            {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'name',
-            },
-            {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'description',
-            },
-        ],
-    }
-};
-
-annotate service.Spacefarer with {
-    position @Common.ValueList : {
-        $Type : 'Common.ValueListType',
-        CollectionPath : 'Position',
-        Parameters : [
-            {
-                $Type : 'Common.ValueListParameterInOut',
-                LocalDataProperty : position_ID,
-                ValueListProperty : 'ID',
-            },
-            {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'title',
-            },
-            {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'description',
-            },
-        ],
-    }
-};
 
 annotate service.Spacefarer with @(
-    UI.HeaderInfo :{
-        TypeName: 'Spacefarer',
+    UI.HeaderInfo: {
+        TypeName      : 'Spacefarer',
         TypeNamePlural: 'Spacefarers',
-        Title: {Value: name}
+        Title         : {Value: name}
     },
-    Capabilities: {
-    Deletable : false,
-    }
+    Capabilities : {Deletable: false}
 );
-
-
-
-
-
