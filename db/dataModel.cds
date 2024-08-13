@@ -8,8 +8,8 @@ entity Spacefarer : cuid {
     wormholeNavigationSkill : String(50)  @mandatory;
     originPlanet            : String(50)  @mandatory;
     spacesuitColor          : String(50)  @mandatory;
-    department_ID           : UUID      @assert.notNull;
-    position_ID             : UUID      @assert.notNull;
+    department_ID           : UUID        @assert.notNull;
+    position_ID             : UUID        @assert.notNull;
     department              : Association to one Department
                                   on department.ID = department_ID;
     position                : Association to one Position
