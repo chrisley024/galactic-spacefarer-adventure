@@ -23,10 +23,10 @@
     "watch-spacefarer": "cds watch --open spacefarer/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
+    "fiori": {
+      "bypass_draft": true
+    },
     "requires": {
-      "fiori": {
-        "bypass_draft": true
-      },
       "db": {
         "kind": "sqlite",
         "credentials": {

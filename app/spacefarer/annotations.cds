@@ -109,14 +109,13 @@ annotate service.Spacefarer with @(
         TypeName: 'Spacefarer',
         TypeNamePlural: 'Spacefarers',
         Title: {Value: name}
+    },
+    Capabilities: {
+    Deletable : false,
     }
 );
 
-annotate service.Spacefarer with @(
-  Capabilities: {
-    Deletable : false,
-  }
-);
+
 
 
 

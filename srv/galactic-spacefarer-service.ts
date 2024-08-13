@@ -8,23 +8,32 @@ export default class GalacticSpacefarerService extends ApplicationService {
     const spacefarerService = new SpacefarerService();
 
     this.before(["CREATE", "UPDATE", "PATCH"], Spacefarer, async (req) => {
-      const payload = req.data as Spacefarer;
+      const payload = req.data;
 
       if (payload.stardustCollection < 0) {
         req.error(400, "Stardust collection cannot be negative!");
       }
-      spacefarerService.validateSpacefarer(payload);
+
+      try {
+        spacefarerService.validateSpacefarer(payload);
+      } catch (error: any) {
+        req.reject(400, error.message);
+      }
     });
 
     this.before("CREATE", Spacefarer, async (req: Request) => {
-      console.log("req> ", req);
       if (req?.user.id !== "admin") {
-        req.error(403, "Forbidden to perform this action!");
+        req.reject(403, " You're Forbidden to perform this action!");
       }
 
       const spacefarer = req.data;
-      spacefarerService.validateDepartment(spacefarer);
-      spacefarerService.validatePosition(spacefarer);
+
+      try {
+        await spacefarerService.validateDepartment(spacefarer);
+        await spacefarerService.validatePosition(spacefarer);
+      } catch (error: any) {
+        req.reject(400, error.message);
+      }
 
       // Enhance stardust collection & Skill
       if (spacefarer.stardustCollection < 100) {
@@ -39,22 +48,22 @@ export default class GalacticSpacefarerService extends ApplicationService {
       spacefarerService.sendCosmicNotification(data as Spacefarer);
     });
 
-    this.before("READ", Spacefarer, async (req: Request) => {
+    this.before("READ", Spacefarer, async (req: any) => {
       const userPlanet = req.user.attr.planet;
 
-      // user sees only data of own planet
+      // User sees only data from their planet
       if (userPlanet) {
-        const query = SELECT.from(Spacefarer).where({
-          originPlanet: userPlanet,
-        });
-
-        req.query = query;
+        req.query.SELECT.where = [
+          { ref: ["originPlanet"] },
+          "=",
+          { val: userPlanet },
+        ];
       }
     });
 
     this.before("DELETE", Spacefarer, async (req: Request) => {
       if (req?.user.id !== "admin") {
-        req.error(403, "Forbidden to perform this action!");
+        req.reject(403, "You're Forbidden to perform this action!");
       }
     });
 

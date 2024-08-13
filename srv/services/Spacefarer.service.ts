@@ -49,20 +49,20 @@ export class SpacefarerService {
 
     if (!SkillLevels.includes(spacefarer.wormholeNavigationSkill)) {
       throw new Error(
-        `wormholeNavigationSkill must be of: ${SkillLevels.join(", ")}`
+        `wormholeNavigationSkill must be one of: ${SkillLevels.join(", ")}`
       );
     }
   }
 
   private validateColor(spacefarer: Spacefarer) {
     if (!Colors.includes(spacefarer.spacesuitColor)) {
-      throw new Error(`Color must be of: ${Colors.join(", ")}`);
+      throw new Error(`Color must be one of: ${Colors.join(", ")}`);
     }
   }
 
   private validatePlanet(spacefarer: Spacefarer) {
     if (!Planets.includes(spacefarer.originPlanet)) {
-      throw new Error(`Planet must be of: ${Planets.join(", ")}`);
+      throw new Error(`Planet must be one of: ${Planets.join(", ")}`);
     }
   }
 

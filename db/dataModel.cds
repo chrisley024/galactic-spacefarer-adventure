@@ -1,7 +1,4 @@
-using {
-    cuid,
-    sap.common.CodeList
-} from '@sap/cds/common';
+using {cuid} from '@sap/cds/common';
 
 namespace my.galactic.spacefarer;
 
