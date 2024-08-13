@@ -2,8 +2,7 @@ using {cuid} from '@sap/cds/common';
 
 namespace my.galactic.spacefarer;
 
-entity Spacefarer  {
-    key ID: UUID;
+entity Spacefarer : cuid {
     name                    : String(100) @mandatory;
     stardustCollection      : Integer     @mandatory;
     wormholeNavigationSkill : String(50)  @mandatory;
@@ -15,13 +14,12 @@ entity Spacefarer  {
                                   on department.ID = department_ID;
     position                : Association to one Position
                                   on position_ID = position.ID;
-    virtual cosmicMessage: LargeString;
+    virtual cosmicMessage   : LargeString;
 }
 
 
 @assert.unique: {Department: [name]}
-entity Department  {
-    key ID: UUID;
+entity Department : cuid {
     name        : String(100) @mandatory;
     spacefarers : Composition of many Spacefarer
                       on spacefarers.department = $self;
@@ -29,12 +27,11 @@ entity Department  {
 }
 
 @assert.unique: {Position: [title]}
-entity Position {
-    key ID: UUID;
+entity Position : cuid {
     title         : String(100) @mandatory;
     department_ID : UUID        @assert.notNull;
     department    : Association to one Department
                         on department_ID = department.ID;
-    spacefarers   : Composition of many Spacefarer
+    spacefarers   : Association to many Spacefarer
                         on spacefarers.position = $self;
 }
