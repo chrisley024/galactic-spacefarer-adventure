@@ -30,7 +30,7 @@ export default class GalacticSpacefarerService extends ApplicationService {
         req.reject(403, " You're Forbidden to perform this action!");
       }
 
-      const spacefarer = req.data as Spacefarer;
+      const spacefarer = req.data;
       try {
         await spacefarerService.validateDepartment(spacefarer);
         await spacefarerService.validatePosition(spacefarer);
@@ -41,14 +41,22 @@ export default class GalacticSpacefarerService extends ApplicationService {
       // Enhance stardust collection & Skill
       if (spacefarer.stardustCollection < 100) {
         spacefarer.stardustCollection = 100;
-      } else if (spacefarer.wormholeNavigationSkill === SkillLevel.LOW) {
+      }
+
+      if (spacefarer.wormholeNavigationSkill === SkillLevel.LOW) {
         spacefarer.wormholeNavigationSkill = SkillLevel.MEDIUM;
       }
     });
 
     this.after("CREATE", Spacefarer, async (data) => {
-      // Simulate sending an email notification
-      spacefarerService.sendCosmicNotification(data as Spacefarer);
+      const spacefarer = data as Spacefarer;
+      // Simulate sending an notification
+      data.cosmicMessage = `Congrats ${spacefarer.name} on starting your adventurous journey!!!`;
+
+      console.log(
+        `cosmicMsg sent to ${spacefarer.name}: `,
+        spacefarer.cosmicMessage
+      );
     });
 
     this.before("READ", Spacefarer, async (req: any) => {

@@ -30,6 +30,7 @@ export type Spacefarer = {
   position_ID: string;
   department?: Department;
   position?: Position;
+  cosmicMessage?: string;
 };
 
 export type Department = {

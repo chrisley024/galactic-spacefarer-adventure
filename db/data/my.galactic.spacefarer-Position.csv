@@ -1,4 +1,3 @@
-ID,title,description,department_ID
-3a0a3e99-4b2d-414b-a9e5-4b79d1e0d1b6,Explorer,Explores new galaxies and planets,1a8a64d4-6c3c-4f3e-b53b-11c62ab729f1
-4d1c8b3b-3a9b-4e6a-8e1b-36b4e5e0a4f1,Scientist,Performs scientific research, a9b1c8d7-8a1b-46e4-bc3f-6523f86a1f3c
-5e2b7b3c-4b6e-49e4-8d27-0d9b1e3c5f5e,Engineer,Maintains and repairs spacecraft, b8c9a8d1-8f4b-42e4-9b57-7f97d2291f90
+ID,title,department_ID
+a3042ec6-4e73-437b-a6c2-61f7066f8140,Navigator,5e156958-e580-4c76-9856-169251b15021
+e3231b49-da42-40a9-9465-be9843276415,Engineer,77bbd071-5533-49f9-b8c0-dc82d4e633ad
