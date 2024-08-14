@@ -36,12 +36,10 @@ export type Spacefarer = {
 export type Department = {
   ID: string;
   name: string;
-  description?: string;
 };
 
 export type Position = {
   ID: string;
   title: string;
-  description?: string;
   department_ID: string;
 };
