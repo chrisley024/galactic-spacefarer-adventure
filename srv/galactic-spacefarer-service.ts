@@ -64,11 +64,12 @@ export default class GalacticSpacefarerService extends ApplicationService {
 
       // User sees only data from their planet
       if (userPlanet) {
-        req.query.SELECT.where = [
-          { ref: ["originPlanet"] },
-          "=",
-          { val: userPlanet },
-        ];
+        const additionalFilter = ["originPlanet =", `'${userPlanet}'`];
+        if (req.query.SELECT.where) {
+          req.query.SELECT.where.push("and", ...additionalFilter);
+        } else {
+          req.query.where(additionalFilter);
+        }
       }
     });
 
