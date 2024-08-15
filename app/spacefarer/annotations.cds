@@ -37,7 +37,7 @@ annotate service.Spacefarer with @(
             },
             {
                 $Type: 'UI.DataField',
-                Label: 'Suit Color',
+                Label: 'Spacesuit Color',
                 Value: spacesuitColor,
 
             },
@@ -70,7 +70,7 @@ annotate service.Spacefarer with @(
         },
         {
             $Type: 'UI.DataField',
-            Label: 'Color',
+            Label: 'Spacesuit Color',
             Value: spacesuitColor,
         },
     ],
