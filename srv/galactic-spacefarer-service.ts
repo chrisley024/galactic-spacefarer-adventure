@@ -1,10 +1,10 @@
 import { ApplicationService, Request } from "@sap/cds";
 import { SpacefarerService } from "./services/Spacefarer.service";
-import { SkillLevel, Spacefarer } from "./types";
+import { Department, Position, SkillLevel, Spacefarer } from "./types";
 
 export default class GalacticSpacefarerService extends ApplicationService {
   init(): Promise<void> {
-    const { Spacefarer } = this.entities;
+    const { Spacefarer, Department, Position } = this.entities;
     const spacefarerService = new SpacefarerService();
 
     this.before(
@@ -30,17 +30,9 @@ export default class GalacticSpacefarerService extends ApplicationService {
       try {
         await spacefarerService.validateDepartment(spacefarer);
         await spacefarerService.validatePosition(spacefarer);
+        spacefarerService.enhanceSkillAndSawDust(spacefarer);
       } catch (error: any) {
         req.reject(400, error.message);
-      }
-
-      // Enhance stardust collection & Skill
-      if (spacefarer.stardustCollection < 100) {
-        spacefarer.stardustCollection = 100;
-      }
-
-      if (spacefarer.wormholeNavigationSkill === SkillLevel.LOW) {
-        spacefarer.wormholeNavigationSkill = SkillLevel.MEDIUM;
       }
     });
 
@@ -72,6 +64,38 @@ export default class GalacticSpacefarerService extends ApplicationService {
     this.before("DELETE", Spacefarer, async (req: Request) => {
       if (!req.user.is("admin")) {
         req.reject(403, "You're Forbidden to perform this action!");
+      }
+    });
+
+    this.before("CREATE", Department, async (req) => {
+      const { spacefarers } = req.data as Department;
+
+      if (spacefarers && spacefarers.length) {
+        for (const spacefarer of spacefarers) {
+          try {
+            spacefarerService.validateSpacefarer(spacefarer);
+            await spacefarerService.validatePosition(spacefarer);
+            spacefarerService.enhanceSkillAndSawDust(spacefarer);
+          } catch (error: any) {
+            req.reject(400, error.message);
+          }
+        }
+      }
+    });
+
+    this.before("CREATE", Position, async (req) => {
+      const { spacefarers } = req.data as Position;
+
+      if (spacefarers && spacefarers.length) {
+        for (const spacefarer of spacefarers) {
+          try {
+            spacefarerService.validateSpacefarer(spacefarer);
+            await spacefarerService.validateDepartment(spacefarer);
+            spacefarerService.enhanceSkillAndSawDust(spacefarer);
+          } catch (error: any) {
+            req.reject(400, error.message);
+          }
+        }
       }
     });
 

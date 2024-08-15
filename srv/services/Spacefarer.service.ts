@@ -1,4 +1,4 @@
-import { Colors, Planets, SkillLevels, Spacefarer } from "../types";
+import { Colors, Planets, SkillLevel, SkillLevels, Spacefarer } from "../types";
 
 export class SpacefarerService {
   private departmentTable = "my.galactic.spacefarer.Department";
@@ -54,6 +54,18 @@ export class SpacefarerService {
   private validatePlanet(spacefarer: Spacefarer) {
     if (!Planets.includes(spacefarer.originPlanet)) {
       throw new Error(`Planet must be one of: ${Planets.join(", ")}`);
+    }
+  }
+  /**
+   * enhances wormhole skill and sawdust collection
+   */
+  public enhanceSkillAndSawDust(spacefarer: Spacefarer) {
+    if (spacefarer.stardustCollection < 100) {
+      spacefarer.stardustCollection = 100;
+    }
+
+    if (spacefarer.wormholeNavigationSkill === SkillLevel.LOW) {
+      spacefarer.wormholeNavigationSkill = SkillLevel.MEDIUM;
     }
   }
 }

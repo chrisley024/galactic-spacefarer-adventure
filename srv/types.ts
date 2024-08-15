@@ -28,18 +28,18 @@ export type Spacefarer = {
   spacesuitColor: Color;
   department_ID: string;
   position_ID: string;
-  department?: Department;
-  position?: Position;
   cosmicMessage?: string;
 };
 
 export type Department = {
   ID: string;
   name: string;
+  spacefarers: Spacefarer[];
 };
 
 export type Position = {
   ID: string;
   title: string;
   department_ID: string;
+  spacefarers: Spacefarer[];
 };
