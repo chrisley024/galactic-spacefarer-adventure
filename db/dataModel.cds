@@ -29,7 +29,7 @@ entity Department : cuid {
 @assert.unique: {Position: [title]}
 entity Position : cuid {
     title         : String(100) @mandatory;
-    department_ID : UUID        @assert.notNull;
+    department_ID : UUID        @mandatory  @assert.notNull;
     department    : Association to one Department
                         on department_ID = department.ID;
     spacefarers   : Association to many Spacefarer
