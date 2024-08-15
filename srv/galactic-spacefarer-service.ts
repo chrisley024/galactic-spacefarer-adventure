@@ -13,10 +13,6 @@ export default class GalacticSpacefarerService extends ApplicationService {
       async (req: Request) => {
         const payload = req.data as Spacefarer;
 
-        if (payload.stardustCollection < 0) {
-          req.error(400, "Stardust collection cannot be negative!");
-        }
-
         try {
           spacefarerService.validateSpacefarer(payload);
         } catch (error: any) {

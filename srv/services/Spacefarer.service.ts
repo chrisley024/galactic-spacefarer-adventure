@@ -5,8 +5,6 @@ export class SpacefarerService {
   private positionTable = "my.galactic.spacefarer.Position";
 
   public async validateDepartment(payload: Spacefarer) {
-    if (!payload.department_ID) throw new Error("No department_ID provided!");
-
     const departmentExists = await SELECT.one
       .from(this.departmentTable)
       .where({ ID: payload.department_ID });
@@ -18,8 +16,6 @@ export class SpacefarerService {
   }
 
   public async validatePosition(payload: Spacefarer) {
-    if (!payload.position_ID) throw new Error("No position_ID provided!");
-
     const positionExists = await SELECT.one
       .from(this.positionTable)
       .where({ ID: payload.position_ID });
@@ -30,6 +26,9 @@ export class SpacefarerService {
   }
 
   public validateSpacefarer(payload: Spacefarer) {
+    if (payload.stardustCollection < 0) {
+      throw new Error("Stardust collection cannot be negative!");
+    }
     this.validatePlanet(payload);
     this.validateSkill(payload);
     this.validateColor(payload);
