@@ -22,7 +22,7 @@ export default class GalacticSpacefarerService extends ApplicationService {
     );
 
     this.before("CREATE", Spacefarer, async (req: Request) => {
-      if (req.user.is("admin")) {
+      if (!req.user.is("admin")) {
         req.reject(403, " You're Forbidden to perform this action!");
       }
 
@@ -70,7 +70,7 @@ export default class GalacticSpacefarerService extends ApplicationService {
     });
 
     this.before("DELETE", Spacefarer, async (req: Request) => {
-      if (req.user.is("admin")) {
+      if (!req.user.is("admin")) {
         req.reject(403, "You're Forbidden to perform this action!");
       }
     });
