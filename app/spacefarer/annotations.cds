@@ -5,16 +5,14 @@ annotate service.Spacefarer with @(
         $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type                  : 'UI.DataField',
-                Label                  : 'Name',
-                Value                  : name,
-                ![@Common.FieldControl]: #ReadOnly,
+                $Type: 'UI.DataField',
+                Label: 'Name',
+                Value: name,
             },
             {
-                $Type                  : 'UI.DataField',
-                Value                  : department.position,
-                Label                  : 'Position',
-                ![@Common.FieldControl]: #ReadOnly,
+                $Type: 'UI.DataField',
+                Value: department_ID,
+                Label: 'Position',
             },
             {
                 $Type: 'UI.DataField',
@@ -22,17 +20,15 @@ annotate service.Spacefarer with @(
                 Value: stardustCollection,
             },
             {
-                $Type                  : 'UI.DataField',
-                Label                  : 'wormhole Navigation Skill',
-                Value                  : wormholeNavigationSkill,
-                ![@Common.FieldControl]: #ReadOnly,
+                $Type: 'UI.DataField',
+                Label: 'wormhole Navigation Skill',
+                Value: wormholeNavigationSkill,
+
             },
             {
-                $Type                  : 'UI.DataField',
-                Label                  : 'Origin Planet',
-                Value                  : originPlanet,
-                ![@Common.FieldControl]: #ReadOnly,
-
+                $Type: 'UI.DataField',
+                Label: 'Origin Planet',
+                Value: originPlanet,
             },
             {
                 $Type: 'UI.DataField',
@@ -83,3 +79,50 @@ annotate service.Spacefarer with @(
     },
     Capabilities : {Deletable: false}
 );
+
+annotate service.Department with {
+    ID @(
+        Common.ValueList               : {
+            $Type         : 'Common.ValueListType',
+            CollectionPath: 'Department',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: ID,
+                ValueListProperty: 'ID',
+            }, ],
+        },
+        Common.ValueListWithFixedValues: true,
+        Common.Text                    : {
+            $value                : position,
+            ![@UI.TextArrangement]: #TextOnly
+        }
+    )
+};
+
+annotate service.Spacefarer with {
+    department_ID @(
+        Common.ValueList               : {
+            $Type         : 'Common.ValueListType',
+            CollectionPath: 'Department',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: department_ID,
+                ValueListProperty: 'ID',
+            }, ],
+        },
+        Common.ValueListWithFixedValues: true,
+        Common.Text                    : {
+            $value                : department.position,
+            ![@UI.TextArrangement]: #TextOnly,
+        }
+
+    )
+};
+
+annotate service.Spacefarer {
+    wormholeNavigationSkill @UI.Placeholder: 'Pls provide skill level: LOW, MEDIUM, or HIGH';
+    spacesuitColor          @UI.Placeholder: 'Pls provide color: Red, Gray, or Blue';
+    originPlanet            @UI.Placeholder: 'Pls provide origin planet: Mars or Venus';
+    stardustCollection      @UI.Placeholder: 'Pls provide a numeric value';
+    name                    @UI.Placeholder: 'Pls provide name';
+}
