@@ -42,11 +42,9 @@ annotate service.Spacefarer with @(
 
             },
             {
-                $Type                  : 'UI.DataField',
-                Value                  : department.name,
-                Label                  : 'Department',
-                ![@Common.FieldControl]: #ReadOnly,
-
+                $Type : 'UI.DataField',
+                Value : position.department.name,
+                Label : 'Department',
             },
         ],
     },
