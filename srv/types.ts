@@ -28,6 +28,7 @@ export type Spacefarer = {
   spacesuitColor: Color;
   department_ID: string;
   cosmicMessage?: string;
+  isAdmin?: boolean;
 };
 
 export type Department = {

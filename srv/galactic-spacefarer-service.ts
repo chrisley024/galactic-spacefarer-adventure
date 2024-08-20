@@ -62,6 +62,12 @@ export default class GalacticSpacefarerService extends ApplicationService {
       }
     });
 
+    this.after("READ", Spacefarer, async (res, req) => {
+      SpacefarerService.asyncMap(res, async (spacefarer: Spacefarer) => {
+        spacefarer.isAdmin = req.user.is("admin");
+      });
+    });
+
     return super.init();
   }
 }

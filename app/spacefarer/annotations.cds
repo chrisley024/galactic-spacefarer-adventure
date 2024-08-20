@@ -5,14 +5,42 @@ annotate service.Spacefarer with @(
         $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type: 'UI.DataField',
-                Label: 'Name',
-                Value: name,
+                $Type                  : 'UI.DataField',
+                Label                  : 'Name',
+                Value                  : name,
+                ![@Common.FieldControl]: {$edmJson: {$If: [
+                    {$And: [
+                        {$Eq: [
+                            {$Path: 'isAdmin'},
+                            false
+                        ]},
+                        {$Eq: [
+                            {$Path: 'HasActiveEntity'},
+                            true
+                        ]}
+                    ]},
+                    1,
+                    3
+                ]}},
             },
             {
-                $Type: 'UI.DataField',
-                Value: department_ID,
-                Label: 'Position',
+                $Type                  : 'UI.DataField',
+                Value                  : department_ID,
+                Label                  : 'Position',
+                ![@Common.FieldControl]: {$edmJson: {$If: [
+                    {$And: [
+                        {$Eq: [
+                            {$Path: 'isAdmin'},
+                            false
+                        ]},
+                        {$Eq: [
+                            {$Path: 'HasActiveEntity'},
+                            true
+                        ]}
+                    ]},
+                    1,
+                    3
+                ]}},
             },
             {
                 $Type: 'UI.DataField',
@@ -20,15 +48,43 @@ annotate service.Spacefarer with @(
                 Value: stardustCollection,
             },
             {
-                $Type: 'UI.DataField',
-                Label: 'wormhole Navigation Skill',
-                Value: wormholeNavigationSkill,
+                $Type                  : 'UI.DataField',
+                Label                  : 'wormhole Navigation Skill',
+                Value                  : wormholeNavigationSkill,
+                ![@Common.FieldControl]: {$edmJson: {$If: [
+                    {$And: [
+                        {$Eq: [
+                            {$Path: 'isAdmin'},
+                            false
+                        ]},
+                        {$Eq: [
+                            {$Path: 'HasActiveEntity'},
+                            true
+                        ]}
+                    ]},
+                    1,
+                    3
+                ]}},
 
             },
             {
-                $Type: 'UI.DataField',
-                Label: 'Origin Planet',
-                Value: originPlanet,
+                $Type                  : 'UI.DataField',
+                Label                  : 'Origin Planet',
+                Value                  : originPlanet,
+                ![@Common.FieldControl]: {$edmJson: {$If: [
+                    {$And: [
+                        {$Eq: [
+                            {$Path: 'isAdmin'},
+                            false
+                        ]},
+                        {$Eq: [
+                            {$Path: 'HasActiveEntity'},
+                            true
+                        ]}
+                    ]},
+                    1,
+                    3
+                ]}},
             },
             {
                 $Type: 'UI.DataField',
@@ -77,7 +133,7 @@ annotate service.Spacefarer with @(
         TypeNamePlural: 'Spacefarers',
         Title         : {Value: name}
     },
-    Capabilities : {Deletable: false}
+    Capabilities : {Deletable: isAdmin}
 );
 
 annotate service.Department with {

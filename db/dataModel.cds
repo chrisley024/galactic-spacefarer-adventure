@@ -11,6 +11,7 @@ entity Spacefarer : cuid {
     department_ID           : UUID        @mandatory  @assert.notNull;
     department              : Association to one Department
                                   on department.ID = department_ID;
+    isAdmin                 : Boolean default false;
     virtual cosmicMessage   : LargeString;
 }
 

@@ -63,4 +63,18 @@ export class SpacefarerService {
       `###################################\n Congrats ${spacefarer.name} on starting your adventurous journey!!!`
     );
   }
+
+  private static ensureArray<T>(value: T | T[]): T[] {
+    if (!Array.isArray(value)) return [value];
+    return value;
+  }
+
+  public static asyncMap<T, S>(
+    value: T | T[],
+    callback: (values: T, index: number, array: T[]) => Promise<S>
+  ): Promise<S[]> {
+    value = this.ensureArray(value);
+    if (value.length === 0) return Promise.resolve([]);
+    return Promise.all(value.map(callback));
+  }
 }
