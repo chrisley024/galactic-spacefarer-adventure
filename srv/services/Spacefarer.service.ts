@@ -68,4 +68,10 @@ export class SpacefarerService {
       spacefarer.wormholeNavigationSkill = SkillLevel.MEDIUM;
     }
   }
+
+  public emailNotification(spacefarer: Spacefarer) {
+    console.log(
+      `###################################\n Congrats ${spacefarer.name} on starting your adventurous journey!!!`
+    );
+  }
 }
