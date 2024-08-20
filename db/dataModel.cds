@@ -5,9 +5,20 @@ namespace my.galactic.spacefarer;
 entity Spacefarer : cuid {
     name                    : String(100) @mandatory;
     stardustCollection      : Integer     @mandatory;
-    wormholeNavigationSkill : String(50)  @mandatory;
-    originPlanet            : String(50)  @mandatory;
-    spacesuitColor          : String(50)  @mandatory;
+    wormholeNavigationSkill : String(50)  @mandatory  @assert.range  enum {
+        HIGH;
+        MEDIUM;
+        LOW;
+    };
+    originPlanet            : String(50)  @mandatory  @assert.range  enum {
+        Mars;
+        Venus;
+    };
+    spacesuitColor          : String(50)  @mandatory  @assert.range  enum {
+        Red;
+        Blue;
+        Gray;
+    };
     department_ID           : UUID        @mandatory  @assert.notNull;
     department              : Association to one Department
                                   on department.ID = department_ID;
