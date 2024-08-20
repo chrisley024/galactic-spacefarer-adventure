@@ -12,10 +12,9 @@ annotate service.Spacefarer with @(
             },
             {
                 $Type                  : 'UI.DataField',
-                Value                  : position.title,
+                Value                  : department.position,
                 Label                  : 'Position',
                 ![@Common.FieldControl]: #ReadOnly,
-
             },
             {
                 $Type: 'UI.DataField',
@@ -43,10 +42,9 @@ annotate service.Spacefarer with @(
             },
             {
                 $Type                  : 'UI.DataField',
-                Value                  : position.department.name,
+                Value                  : department.name,
                 Label                  : 'Department',
                 ![@Common.FieldControl]: #ReadOnly,
-
             },
         ],
     },

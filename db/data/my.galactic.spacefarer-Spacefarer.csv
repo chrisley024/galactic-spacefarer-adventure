@@ -1,7 +1,7 @@
-ID,name,stardustCollection,wormholeNavigationSkill,originPlanet,spacesuitColor,department_ID,position_ID
-4a70e09d-3b10-45ae-bfd7-ed66f86c6f4f,John Mars,500,LOW,Mars,Red,5e156958-e580-4c76-9856-169251b15021,a3042ec6-4e73-437b-a6c2-61f7066f8140,
-fdf728fd-ea45-4d9b-8ddc-44bd88031a6c,Jane Mars,450,MEDIUM,Mars,Gray,5e156958-e580-4c76-9856-169251b15021,a3042ec6-4e73-437b-a6c2-61f7066f8140,
-9627fa94-79cf-4a5b-9be5-c6d0fe75d5e0,Jim Mars,600,HIGH,Mars,Blue,5e156958-e580-4c76-9856-169251b15021,a3042ec6-4e73-437b-a6c2-61f7066f8140,
-9dc57734-a816-40de-a407-5aa6a801f757,Alice Venus,550,LOW,Venus,Red,77bbd071-5533-49f9-b8c0-dc82d4e633ad,e3231b49-da42-40a9-9465-be9843276415,
-2a8e4b04-96ee-4db9-aeda-b6a8e6037aca,Bob Venus,470,MEDIUM,Venus,Gray,77bbd071-5533-49f9-b8c0-dc82d4e633ad,e3231b49-da42-40a9-9465-be9843276415,
-ba0385fb-3cf9-4445-a053-15898fb8cd9c,Eve Venus,620,HIGH,Venus,Blue,77bbd071-5533-49f9-b8c0-dc82d4e633ad,e3231b49-da42-40a9-9465-be9843276415,
+ID,name,stardustCollection,wormholeNavigationSkill,originPlanet,spacesuitColor,department_ID
+4a70e09d-3b10-45ae-bfd7-ed66f86c6f4f,John Mars,500,LOW,Mars,Red,5e156958-e580-4c76-9856-169251b15021
+fdf728fd-ea45-4d9b-8ddc-44bd88031a6c,Jane Mars,450,MEDIUM,Mars,Gray,5e156958-e580-4c76-9856-169251b15021,
+9627fa94-79cf-4a5b-9be5-c6d0fe75d5e0,Jim Mars,600,HIGH,Mars,Blue,5e156958-e580-4c76-9856-169251b15021
+9dc57734-a816-40de-a407-5aa6a801f757,Alice Venus,550,LOW,Venus,Red,77bbd071-5533-49f9-b8c0-dc82d4e633ad
+2a8e4b04-96ee-4db9-aeda-b6a8e6037aca,Bob Venus,470,MEDIUM,Venus,Gray,77bbd071-5533-49f9-b8c0-dc82d4e633ad
+ba0385fb-3cf9-4445-a053-15898fb8cd9c,Eve Venus,620,HIGH,Venus,Blue,77bbd071-5533-49f9-b8c0-dc82d4e633ad

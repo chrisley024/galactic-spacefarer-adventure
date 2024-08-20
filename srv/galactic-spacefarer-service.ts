@@ -29,7 +29,6 @@ export default class GalacticSpacefarerService extends ApplicationService {
       const spacefarer = req.data as Spacefarer;
       try {
         await spacefarerService.validateDepartment(spacefarer);
-        await spacefarerService.validatePosition(spacefarer);
         spacefarerService.enhanceSkillAndSawDust(spacefarer);
       } catch (error: any) {
         req.reject(400, error.message);

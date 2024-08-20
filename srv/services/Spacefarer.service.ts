@@ -2,7 +2,6 @@ import { Colors, Planets, SkillLevel, SkillLevels, Spacefarer } from "../types";
 
 export class SpacefarerService {
   private departmentTable = "my.galactic.spacefarer.Department";
-  private positionTable = "my.galactic.spacefarer.Position";
 
   public async validateDepartment(payload: Spacefarer) {
     const departmentExists = await SELECT.one
@@ -13,16 +12,6 @@ export class SpacefarerService {
       throw new Error(
         `Department with ID ${payload.department_ID} not found!.`
       );
-  }
-
-  public async validatePosition(payload: Spacefarer) {
-    const positionExists = await SELECT.one
-      .from(this.positionTable)
-      .where({ ID: payload.position_ID });
-
-    if (!positionExists) {
-      throw new Error(`Position with ID ${payload.position_ID} not found!.`);
-    }
   }
 
   public validateSpacefarer(payload: Spacefarer) {

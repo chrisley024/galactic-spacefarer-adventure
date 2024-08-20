@@ -7,5 +7,4 @@ service GalacticSpacefarerService @(requires: 'authenticated-user') {
     entity Spacefarer as projection on gs.Spacefarer;
 
     entity Department as projection on gs.Department;
-    entity Position   as projection on gs.Position;
 }

@@ -9,29 +9,19 @@ entity Spacefarer : cuid {
     originPlanet            : String(50)  @mandatory;
     spacesuitColor          : String(50)  @mandatory;
     department_ID           : UUID        @mandatory  @assert.notNull;
-    position_ID             : UUID        @mandatory  @assert.notNull;
     department              : Association to one Department
                                   on department.ID = department_ID;
-    position                : Association to one Position
-                                  on position_ID = position.ID;
     virtual cosmicMessage   : LargeString;
 }
 
 
-@assert.unique: {Department: [name]}
+@assert.unique: {Department: [
+    name,
+    position
+]}
 entity Department : cuid {
     name        : String(100) @mandatory;
+    position    : String(100) @mandatory;
     spacefarers : Composition of many Spacefarer
                       on spacefarers.department = $self;
-
-}
-
-@assert.unique: {Position: [title]}
-entity Position : cuid {
-    title         : String(100) @mandatory;
-    department_ID : UUID        @mandatory  @assert.notNull;
-    department    : Association to one Department
-                        on department_ID = department.ID;
-    spacefarers   : Association to many Spacefarer
-                        on spacefarers.position = $self;
 }
