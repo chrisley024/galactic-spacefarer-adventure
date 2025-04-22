@@ -40,20 +40,6 @@ export default class GalacticSpacefarerService extends ApplicationService {
       spacefarerService.emailNotification(spacefarer);
     });
 
-    this.before("READ", Spacefarer, async (req: any) => {
-      const userPlanet = req.user.attr.planet;
-
-      // User sees only data from their planet
-      if (userPlanet) {
-        const additionalFilter = ["originPlanet =", `'${userPlanet}'`];
-        if (req.query.SELECT.where) {
-          req.query.SELECT.where.push("and", ...additionalFilter);
-        } else {
-          req.query.where(additionalFilter);
-        }
-      }
-    });
-
     this.before("DELETE", Spacefarer, async (req: Request) => {
       if (!req.user.is("admin")) {
         req.reject(403, "You're Forbidden to perform this action!");
